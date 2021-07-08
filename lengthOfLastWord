@@ -1,0 +1,35 @@
+//build-in func
+class Solution {
+    public int lengthOfLastWord(String s) {
+
+        if(s.isEmpty() ||s.isBlank())
+            return 0;
+        String[] splitStr = s.trim().split("\\s+");
+        int result = 0;
+        result = splitStr[splitStr.length-1].length();
+        return result;
+    }
+}
+//loop
+class Solution {
+    public int lengthOfLastWord(String s) {
+
+        if(s.isEmpty() ||s.isBlank())
+            return 0;
+       /* String[] splitStr = s.trim().split("\\s+");
+        int result = 0;
+        result = splitStr[splitStr.length-1].length();
+        return result;*/
+        int num = s.length();
+        int counter =0;
+        while(num>0){
+            num--;
+            if(s.charAt(num)!= ' ')
+                counter++;
+            else if (counter >0)
+                return counter;
+        }
+        return counter;
+
+    }
+}
