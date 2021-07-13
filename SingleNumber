@@ -1,0 +1,13 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> hashtable = new HashMap<>();    
+        for(int i : nums){
+            hashtable.put(i, hashtable.getOrDefault(1,0)+1);
+        }
+        for(int i :nums){
+            if(hashtable.get(i) == 1)
+                return i;
+        }
+        return 0;
+    }
+}
