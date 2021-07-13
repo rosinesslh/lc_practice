@@ -1,0 +1,25 @@
+class Solution {
+    public int maxProfit(int[] prices) {//O(n)
+        int minPri = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for(int i = 0; i < prices.length; i++){
+            if(minPri > prices[i])
+            minPri = prices[i];
+            else if(maxProfit < (prices[i] - minPri)){
+                maxProfit = prices[i] - minPri;
+            }
+        }
+         return maxProfit;
+        /*int profit=0; //BF
+        int maxprofit = Integer.MIN_VALUE;
+        for(int i = 0; i < prices.length-1; i ++){
+            for (int j = prices.length-1; j>i; j--){
+                profit = prices[j] - prices[i];
+                maxprofit = Math.max(maxprofit, profit);
+            }
+        }
+        if(maxprofit < 0)
+            return 0;
+        return maxprofit;*/
+    }
+}
