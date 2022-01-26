@@ -1,0 +1,81 @@
+//create stack of a 2 items list which hold current minimum value at [1] and current top value [0]
+//LIFO
+
+
+Java
+class MinStack {
+    
+    private Stack<int[]> stack = new Stack<>();
+
+    public MinStack() {
+        
+    }
+    
+    public void push(int val) {
+        if(stack.isEmpty()){ //empty current value is the min val
+            stack.push(new int[]{val, val});
+            return;
+        }
+        int currentMin = stack.peek()[1];
+        stack.push(new int[]{val, Math.min(val, currentMin)});
+    }
+    
+    public void pop() {
+        stack.pop();
+    }
+    
+    public int top() {
+        return stack.peek()[0];
+    }
+    
+    public int getMin() {
+        return stack.peek()[1];
+        
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+ 
+ 
+ 
+ Python
+ class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        
+
+    def push(self, val: int) -> None:
+        if not self.stack:
+            self.stack.append((val,val));
+            return
+        
+        current_min = self.stack[-1][1]
+        self.stack.append((val, min(val,current_min)))
+        
+
+    def pop(self) -> None:
+        self.stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1][0]
+        
+
+    def getMin(self) -> int:
+        return self.stack[-1][1]
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
