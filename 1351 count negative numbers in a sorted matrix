@@ -1,0 +1,28 @@
+brute force:
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        count =0
+        for row in grid:
+            for col in row:
+                if col < 0:
+                    count+=1
+
+        return count
+
+
+binary search
+  class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        row = len(grid)
+        col = len(grid[0])
+        count = 0
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j]<0:
+                    count += (row - i) * (col -j)
+                    col = j
+                    break
+            if col == 0:
+                break
+
+        return count
